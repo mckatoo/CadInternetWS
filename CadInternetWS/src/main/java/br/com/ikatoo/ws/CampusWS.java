@@ -2,6 +2,7 @@ package br.com.ikatoo.ws;
 
 import br.com.ikatoo.controllers.CampusJpaController;
 import br.com.ikatoo.models.Campus;
+import br.com.ikatoo.util.ServletUtil;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -15,19 +16,27 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Path("campus")
 public class CampusWS {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/")
-    public String list(){
+    public void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("PU");
         CampusJpaController campusJpa = new CampusJpaController(emf);
         List<Campus> lstCampus = campusJpa.findCampusEntities();
         
         for(Campus campus : lstCampus){
-            return campus.toString();
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String json = gson.toJson(lstCampus);
+            ServletUtil.writeJSON(resp, json);
         }
     }
     
