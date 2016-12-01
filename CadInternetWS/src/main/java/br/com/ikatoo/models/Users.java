@@ -51,38 +51,47 @@ public class Users implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "name")
     private String name;
+    
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="E-mail inválido")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "email")
     private String email;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 60)
     @Column(name = "password")
     @XmlTransient
     private String password;
+    
     @Size(max = 100)
     @Column(name = "remember_token")
     private String rememberToken;
+    
     @Size(max = 100)
     @Column(name = "confirm_token")
     private String confirmToken;
+    
     @Column(name = "created_at", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+    
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
+    
     @Column(name = "deleted_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedAt;
+    
     @JoinColumn(name = "tipoUsers_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private TipoUsers tipoUsersid;

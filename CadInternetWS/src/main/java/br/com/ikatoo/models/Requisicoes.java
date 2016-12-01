@@ -49,38 +49,48 @@ public class Requisicoes implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 60)
     @Column(name = "nome")
     private String nome;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "rarefunc")
     private long rarefunc;
+    
     @Size(max = 15)
     @Column(name = "ip")
     private String ip;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 17)
     @Column(name = "MAC")
     private String mac;
+    
     @Column(name = "created_at", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+    
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
+    
     @Column(name = "deleted_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedAt;
+    
     @JoinColumn(name = "campus_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Campus campusId;
+    
     @JoinColumn(name = "status_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Status statusId;
+    
     @JoinColumn(name = "usuarioTipo_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private UsuarioTipo usuarioTipoid;

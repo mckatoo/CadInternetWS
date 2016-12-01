@@ -2,15 +2,12 @@ package br.com.ikatoo.business;
 
 import br.com.ikatoo.infra.HibernateUtil;
 import br.com.ikatoo.models.Campus;
-//import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class CampusBus {
     public Integer inserir(Campus campus) {
-        campus.setCampus("5");
-
         Session s = HibernateUtil.getSessionFactory().openSession();
         Transaction t = s.beginTransaction();
         s.save(campus);
@@ -28,7 +25,6 @@ public class CampusBus {
     public void excluir(Integer id) {
         Session s = HibernateUtil.getSessionFactory().openSession();
         Campus c = selecionar(id);
-
         Transaction t = s.beginTransaction();
         s.delete(c);
         t.commit();

@@ -64,10 +64,8 @@ public class CampusController {
     @Path("/")
     public Response update(Campus campus) {
         try {
-//            campus.setCampus(campus);
-//
-//            CampusBus chamadoBus = new CampusBus();
-//            chamadoBus.alterar(campus);
+            CampusBus chamadoBus = new CampusBus();
+            chamadoBus.alterar(campus);
             return Response.status(Response.Status.OK).build();
         } catch (Exception ex) {
             Logger.getLogger(CampusController.class.getName()).log(Level.SEVERE, null, ex);
@@ -87,21 +85,21 @@ public class CampusController {
             throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
         }
     }
-
-    @PUT
-    @Path("{id}/")
-    public Response concluir(@PathParam("id") Integer id) {
-        try {
+//
+//    @PUT
+//    @Path("{id}/")
+//    public Response concluir(@PathParam("id") Integer id) {
+//        try {
 //            CampusBus campusBus = new CampusBus();
 //
 //            Campus c = campusBus.selecionar(id);
 //            c.setStatus(Status.FECHADO);
 //
 //            campusBus.alterar(c);
-            return Response.status(Response.Status.OK).build();
-        } catch (Exception ex) {
-            Logger.getLogger(CampusController.class.getName()).log(Level.SEVERE, null, ex);
-            throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
-        }
-}
+//            return Response.status(Response.Status.OK).build();
+//        } catch (Exception ex) {
+//            Logger.getLogger(CampusController.class.getName()).log(Level.SEVERE, null, ex);
+//            throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 }

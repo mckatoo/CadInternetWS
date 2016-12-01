@@ -2,15 +2,12 @@ package br.com.ikatoo.business;
 
 import br.com.ikatoo.infra.HibernateUtil;
 import br.com.ikatoo.models.Requisicoes;
-//import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class RequisicoesBus {
     public Integer inserir(Requisicoes requisicoes) {
-//        requisicoes.setNome("5");
-
         Session s = HibernateUtil.getSessionFactory().openSession();
         Transaction t = s.beginTransaction();
         s.save(requisicoes);
@@ -28,7 +25,6 @@ public class RequisicoesBus {
     public void excluir(Integer id) {
         Session s = HibernateUtil.getSessionFactory().openSession();
         Requisicoes c = selecionar(id);
-
         Transaction t = s.beginTransaction();
         s.delete(c);
         t.commit();
