@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Context path="/CadInternetWS">
-  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="Campus1-Docker" password="xeon2accept" type="javax.sql.DataSource" url="jdbc:mysql://campus1-iesi.ddns.net:3316/cadinternet?zeroDateTimeBehavior=convertToNull" username="cpd"/>
-  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="DOCKER" password="root" type="javax.sql.DataSource" url="jdbc:mysql://172.16.111.91:3316/cadinternet?zeroDateTimeBehavior=convertToNull" username="root"/>
-</Context>

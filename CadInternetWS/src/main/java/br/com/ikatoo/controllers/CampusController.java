@@ -64,10 +64,10 @@ public class CampusController {
     @Path("/")
     public Response update(Campus campus) {
         try {
-            campus.setStatus(Status.PENDENTE);
-
-            CampusBus chamadoBus = new CampusBus();
-            chamadoBus.alterar(campus);
+//            campus.setCampus(campus);
+//
+//            CampusBus chamadoBus = new CampusBus();
+//            chamadoBus.alterar(campus);
             return Response.status(Response.Status.OK).build();
         } catch (Exception ex) {
             Logger.getLogger(CampusController.class.getName()).log(Level.SEVERE, null, ex);
@@ -92,12 +92,12 @@ public class CampusController {
     @Path("{id}/")
     public Response concluir(@PathParam("id") Integer id) {
         try {
-            CampusBus campusBus = new CampusBus();
-
-            Campus c = campusBus.selecionar(id);
-            c.setStatus(Status.FECHADO);
-
-            campusBus.alterar(c);
+//            CampusBus campusBus = new CampusBus();
+//
+//            Campus c = campusBus.selecionar(id);
+//            c.setStatus(Status.FECHADO);
+//
+//            campusBus.alterar(c);
             return Response.status(Response.Status.OK).build();
         } catch (Exception ex) {
             Logger.getLogger(CampusController.class.getName()).log(Level.SEVERE, null, ex);
