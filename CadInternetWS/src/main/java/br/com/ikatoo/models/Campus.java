@@ -55,7 +55,7 @@ public class Campus implements Serializable {
     private String campus;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
     @Basic(optional = false)

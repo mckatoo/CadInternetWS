@@ -23,6 +23,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -65,6 +66,7 @@ public class Users implements Serializable {
     @NotNull
     @Size(min = 1, max = 60)
     @Column(name = "password")
+    @XmlTransient
     private String password;
     @Size(max = 100)
     @Column(name = "remember_token")
@@ -72,7 +74,7 @@ public class Users implements Serializable {
     @Size(max = 100)
     @Column(name = "confirm_token")
     private String confirmToken;
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
     @Column(name = "updated_at")
@@ -96,6 +98,7 @@ public class Users implements Serializable {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.name = name;
         this.password = password;
     }
 
@@ -125,6 +128,11 @@ public class Users implements Serializable {
 
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String toString() {
+        return "Users{" + "id=" + id + ", name=" + name + ", email=" + email + ", rememberToken=" + rememberToken + ", confirmToken=" + confirmToken + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", deletedAt=" + deletedAt + ", tipoUsersid=" + tipoUsersid + '}';
     }
 
     public void setPassword(String password) {
@@ -197,11 +205,6 @@ public class Users implements Serializable {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "br.com.ikatoo.models.Users[ id=" + id + " ]";
     }
     
 }
