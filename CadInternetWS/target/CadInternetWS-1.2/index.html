@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pré Cadastro de Internet</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body ng-app="CadInternetApp">
+        <div ng-controller="UserController as controller">
+            <h1>Pré Cadastro de Internet</h1>
+            <h5>Olá {{controller.usuario}}</h5>
+            <div style="border: 1px solid black;" ng-show="controller.user">
+                <label for="userId">ID: </label>
+                <input type="number" id="userId" data-ng-model="controller.user.id" disabled="disabled"><br>
+                
+                <label for="nome">Nome: </label>
+                <input type="text" id="nome" data-ng-model="controller.user.nome"><br>
+                
+                <label for="email">E-Mail: </label>
+                <input type="email" id="email" data-ng-model="controller.user.email"><br>
+                
+                <label for="senha">Senha: </label>
+                <input type="password" id="senha" data-ng-model="controller.user.password"><br>
+                
+                <label for="confirmar">Confirme a senha: </label>
+                <input type="password" id="confirmar" data-ng-model="controller.user.confirmar"><br>
+                
+                <button type="button" data-ng-click="controller.salvar()">Salvar</button>
+                <button type="reset" data-ng-click="controller.user = undefined">Cancelar</button>
+            </div>
+            
+            <div style="border: 1px solid black;" data-ng-show="!controller.user">
+                <button type="button" data-ng-click="controller.novo()">Novo Usuário</button><br>
+                <br>
+                <table border="1">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>E-Mail</th>
+                        <th>Criado em</th>
+                        <th>Atualizado em</th>
+                        <th>Opções</th>
+                    </tr>
+                    <tr data-ng-repeat="user in controller.users">
+                        <td>{{user.id}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.createdAt | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+                        <td>{{user.updatedAt | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+                        <td>
+                            <button type="button" data-ng-click="controller.alterar(user)">Alterar</button>
+                            <button type="button" data-ng-click="controller.deletar(user)">Excluir</button>
+                            <button type="button" 
+                                    data-ng-show="user.status !== 'FECHADO'"
+                                    data-ng-click="controller.concluir(user)">Concluir</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <button type="button" data-ng-click="controller.alterar(user)">Alterar</button>
+                        <button type="button" data-ng-click="controller.deletar(user)">Excluir</button>
+                        <button type="button" data-ng-click="controller.concluir(user)">Concluir</button>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script src="resources/angular.js"></script>
+        <script src="resources/CadInternet.js"></script>
+    </body>
+</html>
