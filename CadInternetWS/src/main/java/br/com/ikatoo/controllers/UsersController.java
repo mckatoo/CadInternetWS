@@ -85,18 +85,4 @@ public class UsersController {
             throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
         }
     }
-//
-//    @PUT
-//    @Path("{id}/")
-//    public Response concluir(@PathParam("id") Integer id) {
-//        try {
-//            UsersBus usersBus = new UsersBus();
-//            Users c = usersBus.selecionar(id);
-//            usersBus.alterar(c);
-//            return Response.status(Response.Status.OK).build();
-//        } catch (Exception ex) {
-//            Logger.getLogger(UsersController.class.getName()).log(Level.SEVERE, null, ex);
-//            throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
-//        }
-//    }
 }

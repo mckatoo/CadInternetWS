@@ -85,18 +85,4 @@ public class RequisicoesController {
             throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
         }
     }
-//
-//    @PUT
-//    @Path("{id}/")
-//    public Response concluir(@PathParam("id") Integer id) {
-//        try {
-//            RequisicoesBus requisicoesBus = new RequisicoesBus();
-//            Requisicoes c = requisicoesBus.selecionar(id);
-//            requisicoesBus.alterar(c);
-//            return Response.status(Response.Status.OK).build();
-//        } catch (Exception ex) {
-//            Logger.getLogger(RequisicoesController.class.getName()).log(Level.SEVERE, null, ex);
-//            throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
-//        }
-//    }
 }

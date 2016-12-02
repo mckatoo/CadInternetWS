@@ -2,32 +2,36 @@ package br.com.ikatoo.business;
 
 import br.com.ikatoo.infra.HibernateUtil;
 import br.com.ikatoo.models.Campus;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class CampusBus {
     public Integer inserir(Campus campus) {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        Transaction t = s.beginTransaction();
-        s.save(campus);
-        t.commit();
+        campus.setCreatedAt(new Date());
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(campus);
+        transaction.commit();
         return campus.getId();
     }
 
     public void alterar(Campus campus) {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        Transaction t = s.beginTransaction();
-        s.merge(campus);
-        t.commit();
+        campus.setUpdatedAt(new Date());
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        session.merge(campus);
+        transaction.commit();
     }
 
     public void excluir(Integer id) {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        Campus c = selecionar(id);
-        Transaction t = s.beginTransaction();
-        s.delete(c);
-        t.commit();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Campus campus = selecionar(id);
+        campus.setDeletedAt(new Date());
+        Transaction transaction = session.beginTransaction();
+        session.merge(campus);
+        transaction.commit();
     }
 
     public Campus selecionar(Integer id) {
@@ -39,7 +43,7 @@ public class CampusBus {
     public List<Campus> listar() {
         return (List<Campus>) HibernateUtil.getSessionFactory()
                 .openSession()
-                .createQuery("from Campus")
+                .createQuery("from Campus where deleted_at IS NULL")
                 .list();
     }
 }

@@ -2,32 +2,36 @@ package br.com.ikatoo.business;
 
 import br.com.ikatoo.infra.HibernateUtil;
 import br.com.ikatoo.models.Users;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class UsersBus {
     public Integer inserir(Users users) {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        Transaction t = s.beginTransaction();
-        s.save(users);
-        t.commit();
+        users.setCreatedAt(new Date());
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(users);
+        transaction.commit();
         return users.getId();
     }
 
     public void alterar(Users users) {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        Transaction t = s.beginTransaction();
-        s.merge(users);
-        t.commit();
+        users.setUpdatedAt(new Date());
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        session.merge(users);
+        transaction.commit();
     }
-
+    
     public void excluir(Integer id) {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        Users c = selecionar(id);
-        Transaction t = s.beginTransaction();
-        s.delete(c);
-        t.commit();
+        Users user = selecionar(id);
+        user.setDeletedAt(new Date());
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        session.merge(user);
+        transaction.commit();
     }
 
     public Users selecionar(Integer id) {
@@ -39,7 +43,7 @@ public class UsersBus {
     public List<Users> listar() {
         return (List<Users>) HibernateUtil.getSessionFactory()
                 .openSession()
-                .createQuery("from Users")
+                .createQuery("from Users where deleted_at IS NULL")
                 .list();
     }
 }

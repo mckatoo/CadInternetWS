@@ -43,17 +43,12 @@
                         <td>{{user.id}}</td>
                         <td>{{user.name}}</td>
                         <td>{{user.email}}</td>
-                        <td>{{user.createdAt | date: 'dd/MM/yyyy HH:mm':'UTC'}}</td>
-                        <td>{{user.updatedAt | date: 'dd/MM/yyyy HH:mm':'UTC'}}</td>
+                        <td>{{user.createdAt | date: 'dd/MM/yyyy HH:mm'}}</td>
+                        <td>{{user.updatedAt | date: 'dd/MM/yyyy HH:mm'}}</td>
                         <td>
                             <button type="button" data-ng-click="controller.alterar(user)">Alterar</button>
                             <button type="button" data-ng-click="controller.deletar(user)">Excluir</button>
                         </td>
-                    </tr>
-                    <tr>
-                        <button type="button" data-ng-click="controller.alterar(user)">Alterar</button>
-                        <button type="button" data-ng-click="controller.deletar(user)">Excluir</button>
-                        <button type="button" data-ng-click="controller.concluir(user)">Concluir</button>
                     </tr>
                 </table>
             </div>
