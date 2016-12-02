@@ -12,17 +12,16 @@
                 <label for="userId">ID: </label>
                 <input type="number" id="userId" data-ng-model="controller.user.id" disabled="disabled"><br>
                 
+                <input type="number" value="1" id="tipoUsersid" data-ng-model="controller.user.tipoUsersid"><br>
+                
                 <label for="nome">Nome: </label>
-                <input type="text" id="nome" data-ng-model="controller.user.nome"><br>
+                <input type="text" id="nome" data-ng-model="controller.user.name"><br>
                 
                 <label for="email">E-Mail: </label>
                 <input type="email" id="email" data-ng-model="controller.user.email"><br>
                 
                 <label for="senha">Senha: </label>
                 <input type="password" id="senha" data-ng-model="controller.user.password"><br>
-                
-                <label for="confirmar">Confirme a senha: </label>
-                <input type="password" id="confirmar" data-ng-model="controller.user.confirmar"><br>
                 
                 <button type="button" data-ng-click="controller.salvar()">Salvar</button>
                 <button type="reset" data-ng-click="controller.user = undefined">Cancelar</button>
@@ -44,14 +43,11 @@
                         <td>{{user.id}}</td>
                         <td>{{user.name}}</td>
                         <td>{{user.email}}</td>
-                        <td>{{user.createdAt | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
-                        <td>{{user.updatedAt | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+                        <td>{{user.createdAt | date: 'dd/MM/yyyy HH:mm':'UTC'}}</td>
+                        <td>{{user.updatedAt | date: 'dd/MM/yyyy HH:mm':'UTC'}}</td>
                         <td>
                             <button type="button" data-ng-click="controller.alterar(user)">Alterar</button>
                             <button type="button" data-ng-click="controller.deletar(user)">Excluir</button>
-                            <button type="button" 
-                                    data-ng-show="user.status !== 'FECHADO'"
-                                    data-ng-click="controller.concluir(user)">Concluir</button>
                         </td>
                     </tr>
                     <tr>

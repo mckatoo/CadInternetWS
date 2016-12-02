@@ -45,19 +45,6 @@ angular.module("CadInternetApp", [])
                 });
             };
 
-            self.concluir = function (user) {
-                self.user = user;
-
-                $http({
-                    method: 'PUT',
-                    url: urlBase + 'users/' + self.user.id + '/'
-                }).then(function successCallback(response) {
-                    self.atualizarTabela();
-                }, function errorCallback(response) {
-                    self.ocorreuErro();
-                });
-            };
-
             self.ocorreuErro = function () {
                 alert("Ocorreu um erro inesperado!");
             };
