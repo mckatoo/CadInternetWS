@@ -17,11 +17,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ws.rs.WebApplicationException;
 
-@Path("status")
+@Path("status/")
 public class StatusController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/")
+//    @Path("/")
     public List<Status> lstStatus() {
         try {
             StatusBus statusBus = new StatusBus();
@@ -34,7 +34,7 @@ public class StatusController {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("{id}")
+    @Path("{id}/")
     public Status getStatus(@PathParam("id") Integer id){
         try {
             StatusBus statusBus = new StatusBus();
@@ -47,7 +47,7 @@ public class StatusController {
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/")
+//    @Path("/")
     public Response create(Status status) {
         try {
             StatusBus statusBus = new StatusBus();
@@ -61,7 +61,7 @@ public class StatusController {
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/")
+//    @Path("/")
     public Response update(Status status) {
         try {
             StatusBus chamadoBus = new StatusBus();

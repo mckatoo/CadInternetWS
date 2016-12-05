@@ -1,5 +1,5 @@
 angular.module("CadInternetApp", [])
-        .value('urlBase', 'http://localhost:8084/CadInternetWS/ws/')
+        .value('urlBase', window.location.href.toString()+'ws/')
         .controller("UserController", function ($http, urlBase) {
             var self = this;
             self.usuario = 'Milton Carlos Katoo';

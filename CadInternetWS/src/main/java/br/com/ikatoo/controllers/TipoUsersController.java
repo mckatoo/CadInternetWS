@@ -17,11 +17,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ws.rs.WebApplicationException;
 
-@Path("tipousers")
+@Path("tipousers/")
 public class TipoUsersController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/")
+//    @Path("/")
     public List<TipoUsers> lstTipoUsers() {
         try {
             TipoUsersBus tipousersBus = new TipoUsersBus();
@@ -34,7 +34,7 @@ public class TipoUsersController {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("{id}")
+    @Path("{id}/")
     public TipoUsers getTipoUsers(@PathParam("id") Integer id){
         try {
             TipoUsersBus tipousersBus = new TipoUsersBus();
@@ -47,7 +47,7 @@ public class TipoUsersController {
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/")
+//    @Path("/")
     public Response create(TipoUsers tipousers) {
         try {
             TipoUsersBus tipousersBus = new TipoUsersBus();
@@ -61,7 +61,7 @@ public class TipoUsersController {
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/")
+//    @Path("/")
     public Response update(TipoUsers tipousers) {
         try {
             TipoUsersBus chamadoBus = new TipoUsersBus();

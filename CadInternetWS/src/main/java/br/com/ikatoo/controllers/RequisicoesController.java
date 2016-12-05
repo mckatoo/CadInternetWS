@@ -17,11 +17,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ws.rs.WebApplicationException;
 
-@Path("requisicoes")
+@Path("requisicoes/")
 public class RequisicoesController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/")
+//    @Path("/")
     public List<Requisicoes> lstRequisicoes() {
         try {
             RequisicoesBus requisicoesBus = new RequisicoesBus();
@@ -34,7 +34,7 @@ public class RequisicoesController {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("{id}")
+    @Path("{id}/")
     public Requisicoes getRequisicoes(@PathParam("id") Integer id){
         try {
             RequisicoesBus requisicoesBus = new RequisicoesBus();
@@ -47,7 +47,7 @@ public class RequisicoesController {
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/")
+//    @Path("/")
     public Response create(Requisicoes requisicoes) {
         try {
             RequisicoesBus requisicoesBus = new RequisicoesBus();
@@ -61,7 +61,7 @@ public class RequisicoesController {
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/")
+//    @Path("/")
     public Response update(Requisicoes requisicoes) {
         try {
             RequisicoesBus chamadoBus = new RequisicoesBus();

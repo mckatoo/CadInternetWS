@@ -17,11 +17,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ws.rs.WebApplicationException;
 
-@Path("campus")
+@Path("campus/")
 public class CampusController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/")
+//    @Path("/")
     public List<Campus> lstCampus() {
         try {
             CampusBus campusBus = new CampusBus();
@@ -34,7 +34,7 @@ public class CampusController {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("{id}")
+    @Path("{id}/")
     public Campus getCampus(@PathParam("id") Integer id){
         try {
             CampusBus campusBus = new CampusBus();
@@ -47,7 +47,7 @@ public class CampusController {
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/")
+//    @Path("/")
     public Response create(Campus campus) {
         try {
             CampusBus campusBus = new CampusBus();
@@ -61,7 +61,7 @@ public class CampusController {
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/")
+//    @Path("/")
     public Response update(Campus campus) {
         try {
             CampusBus chamadoBus = new CampusBus();
